@@ -1,18 +1,40 @@
 package com.example.Todomate.service.User;
 
 import com.example.Todomate.dto.User.request.UserUpdateRequest;
+import com.example.Todomate.dto.User.response.UserResponse;
+import com.example.Todomate.repository.User.UserRepository;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.web.bind.annotation.RequestBody;
+
+import java.util.List;
 
 public class UserService {
-    public void updateUser(JdbcTemplate jdbcTemplate, UserUpdateRequest request){
-        String readSql = "SELECT * FROM user WHERE id = ?";
-        boolean isUserNotExist = jdbcTemplate.query(readSql, (rs, rowNum)-> 0, request.getId()).isEmpty();
-        if(isUserNotExist){
+    private final UserRepository userRepository;
+
+    public UserService(JdbcTemplate jdbcTemplate) {
+        this.userRepository = new UserRepository(jdbcTemplate);
+    }
+
+    public void saveUser(String name, int age){
+        userRepository.saveUserToDB(name, age);
+    }
+
+    public List<UserResponse> getUser(){
+        return userRepository.getUserFromDB();
+    }
+
+    public void updateUser(UserUpdateRequest request){
+        if(userRepository.checkUserExist(request.getId())){
             throw new IllegalArgumentException();
         }
-        String sql = "UPDATE user SET name = ? WHERE id = ?";
-        jdbcTemplate.update(sql, request.getName(), request.getId());
+        userRepository.updateUserToDB(request);
+    }
 
+    public void deleteUser(String name){
+        String readSql = "DELETE * FROM user WHERE name = ?";
+
+        if(userRepository.isUserNotExist(name)){
+            throw new IllegalArgumentException();
+        }
+        userRepository.deleteUserToDB(name);
     }
 }
