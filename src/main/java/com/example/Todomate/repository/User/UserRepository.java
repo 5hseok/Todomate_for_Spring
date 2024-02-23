@@ -3,9 +3,11 @@ package com.example.Todomate.repository.User;
 import com.example.Todomate.dto.User.request.UserUpdateRequest;
 import com.example.Todomate.dto.User.response.UserResponse;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public class UserRepository {
     private final JdbcTemplate jdbcTemplate;
 

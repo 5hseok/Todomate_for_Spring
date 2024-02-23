@@ -4,14 +4,16 @@ import com.example.Todomate.dto.User.request.UserUpdateRequest;
 import com.example.Todomate.dto.User.response.UserResponse;
 import com.example.Todomate.repository.User.UserRepository;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class UserService {
     private final UserRepository userRepository;
 
-    public UserService(JdbcTemplate jdbcTemplate) {
-        this.userRepository = new UserRepository(jdbcTemplate);
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
     public void saveUser(String name, int age){
