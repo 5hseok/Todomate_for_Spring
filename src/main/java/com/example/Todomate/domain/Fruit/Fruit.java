@@ -9,6 +9,13 @@ public class Fruit {
     private long price;
     private boolean sell;
 
+    public Fruit(long id, String name, LocalDate warehousingDate, long price) {
+        this.id = id;
+        this.name = name;
+        this.warehousingDate = warehousingDate;
+        this.price = price;
+    }
+
     public Fruit(String name, LocalDate warehousingDate, long price) {
         if (name == null || name.isBlank()){
             throw new IllegalArgumentException("잘못된 name(%s)이 들어왔습니다.");
@@ -53,5 +60,9 @@ public class Fruit {
 
     public boolean isSell() {
         return sell;
+    }
+
+    public void setSell(boolean sell) {
+        this.sell = sell;
     }
 }
