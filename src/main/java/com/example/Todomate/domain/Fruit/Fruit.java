@@ -1,45 +1,39 @@
 package com.example.Todomate.domain.Fruit;
 
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "warehouse")
 public class Fruit {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column(nullable = false, length = 20)
     private String name;
+
     private LocalDate warehousingDate;
+    @Column(nullable = false)
     private long price;
     private boolean sell;
+
+    protected Fruit() {
+    }
 
     public Fruit(long id, String name, LocalDate warehousingDate, long price) {
         this.id = id;
         this.name = name;
         this.warehousingDate = warehousingDate;
         this.price = price;
-    }
-
-    public Fruit(String name, LocalDate warehousingDate, long price) {
-        if (name == null || name.isBlank()){
-            throw new IllegalArgumentException("잘못된 name(%s)이 들어왔습니다.");
-        }
-        if (price < 0){
-            throw new IllegalArgumentException("잘못된 price(%s)가 들어왔습니다.");
-        }
-        this.name = name;
-        this.warehousingDate = warehousingDate;
-        this.price = price;
         this.sell = false;
     }
 
-    public Fruit(long id, String name, long price, boolean sell) {
-        this.id  = id;
+    public Fruit(String name, LocalDate warehousingDate, long price) {
         this.name = name;
+        this.warehousingDate = warehousingDate;
         this.price = price;
-        this.sell = sell;
-    }
-
-    public Fruit(long price, boolean sell){
-
-        this.price = price;
-        this.sell = sell;
+        this.sell= false;
     }
 
     public long getId() {
@@ -48,10 +42,6 @@ public class Fruit {
 
     public String getName() {
         return name;
-    }
-
-    public LocalDate getWarehousingDate() {
-        return warehousingDate;
     }
 
     public long getPrice() {
@@ -64,5 +54,9 @@ public class Fruit {
 
     public void setSell(boolean sell) {
         this.sell = sell;
+    }
+
+    public LocalDate getWarehousingDate() {
+        return warehousingDate;
     }
 }

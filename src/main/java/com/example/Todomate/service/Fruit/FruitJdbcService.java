@@ -8,15 +8,15 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class FruitService{
+public class FruitJdbcService {
     private final FruitRepository fruitRepository;
 
-    public FruitService(@Qualifier("main") FruitRepository fruitRepository) {
+    public FruitJdbcService(@Qualifier("SQL") FruitRepository fruitRepository) {
         this.fruitRepository = fruitRepository;
     }
 
     public void saveFruit(FruitRequest fruitRequest){
-        if (fruitRequest.getName() == null || fruitRequest.getWarehousingDate() == null || fruitRequest.getPrice() == null) {
+        if (fruitRequest.getName() == null || fruitRequest.getWarehousingDate() == null) {
             throw new IllegalArgumentException();
         }
         fruitRepository.saveFruit(fruitRequest);

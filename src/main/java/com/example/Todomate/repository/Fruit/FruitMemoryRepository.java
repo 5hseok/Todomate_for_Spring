@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Qualifier("main")
+
 @Repository
 public class FruitMemoryRepository implements FruitRepository{
     private List<Fruit> fruitList;
@@ -60,5 +60,10 @@ public class FruitMemoryRepository implements FruitRepository{
             }
         }
         return true;
+    }
+
+    @Override
+    public long findAllByPriceGreaterThanEqual(long price) {
+        return 0;
     }
 }

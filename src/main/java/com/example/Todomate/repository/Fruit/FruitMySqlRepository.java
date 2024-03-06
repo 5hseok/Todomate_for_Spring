@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
-
+@Qualifier("SQL")
 @Repository
 public class FruitMySqlRepository implements FruitRepository{
     private final JdbcTemplate jdbcTemplate;
@@ -61,5 +61,10 @@ public class FruitMySqlRepository implements FruitRepository{
     public boolean isNotFruitExist(long id) {
         String readSql = "SELECT * FROM warehouse WHERE id = ?";
         return jdbcTemplate.query(readSql, (rs, rowNum)-> 0, id).isEmpty();
+    }
+
+    @Override
+    public long findAllByPriceGreaterThanEqual(long price) {
+        return 0;
     }
 }

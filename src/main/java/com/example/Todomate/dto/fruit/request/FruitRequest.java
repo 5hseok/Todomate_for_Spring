@@ -10,7 +10,7 @@ public class FruitRequest {
 
     private LocalDate warehousingDate;
 
-    private Long price;
+    private long price;
 
     public String getName() {
         return name;
@@ -20,7 +20,7 @@ public class FruitRequest {
         return warehousingDate;
     }
 
-    public Long getPrice() {
+    public long getPrice() {
         return price;
     }
 }
