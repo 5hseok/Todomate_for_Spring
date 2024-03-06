@@ -1,5 +1,8 @@
 package com.example.Todomate.repository.Book;
 
-public interface BookRepository {
-    void saveBook();
+import com.example.Todomate.domain.Book.Book;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+
+public interface BookRepository extends JpaRepository<Book, Long> {
 }
