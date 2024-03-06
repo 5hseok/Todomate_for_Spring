@@ -3,28 +3,28 @@ package com.example.Todomate.controller.User;
 import com.example.Todomate.dto.User.request.UserCreateRequest;
 import com.example.Todomate.dto.User.request.UserUpdateRequest;
 import com.example.Todomate.dto.User.response.UserResponse;
-import com.example.Todomate.service.User.UserService;
-import org.springframework.jdbc.core.JdbcTemplate;
+import com.example.Todomate.service.User.UserServiceV1;
+import com.example.Todomate.service.User.UserServiceV2;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 public class UserController {
-    private final UserService userService;
+    private final UserServiceV2 userServiceV2;
 
-    public UserController(UserService userService){
-        this.userService = userService;
+    public UserController(UserServiceV2 userServiceV2){
+        this.userServiceV2 = userServiceV2;
     }
 
     @PostMapping("/user")   //POST /user
     public void saveUser(@RequestBody UserCreateRequest request){
-        userService.saveUser(request.getName(), request.getAge());
+        userServiceV2.saveUser(request.getName(), request.getAge());
     }
 
     @GetMapping("/user")
     public List<UserResponse> getUsers(){
-       return userService.getUser();
+       return userServiceV2.getUser();
     }
 //        return jdbcTemplate.query(sql, new RowMapper<UserResponse>() {    위의 코드는 이걸 lambda로 바꾼 것
 //            @Override
@@ -37,11 +37,11 @@ public class UserController {
 //        });
     @PutMapping("/user")
     public void updateUser(@RequestBody UserUpdateRequest request){
-        userService.updateUser(request);
+        userServiceV2.updateUser(request);
     }
 
     @DeleteMapping("/user")
     public void deleteUser(@RequestParam String name){
-        userService.deleteUser(name);
+        userServiceV2.deleteUser(name);
     }
 }
