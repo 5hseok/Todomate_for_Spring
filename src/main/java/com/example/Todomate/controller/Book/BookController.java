@@ -1,9 +1,11 @@
 package com.example.Todomate.controller.Book;
 
 import com.example.Todomate.dto.Book.request.BookLoanRequest;
+import com.example.Todomate.dto.Book.request.BookReturnRequest;
 import com.example.Todomate.dto.Book.request.BookSaveRequest;
 import com.example.Todomate.service.Book.BookService;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,4 +26,10 @@ public class BookController {
     public void loanBook(@RequestBody BookLoanRequest request){
         bookService.loanBook(request.getUserName(), request.getBookName());
     }
+
+    @PutMapping("/book/return")
+    public void returnBook(@RequestBody BookReturnRequest request){
+        bookService.returnBook(request.getUserName(), request.getBookName());
+    }
+
 }

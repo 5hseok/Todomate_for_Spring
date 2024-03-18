@@ -1,7 +1,6 @@
 package com.example.Todomate.domain.Book;
 
 import jakarta.persistence.*;
-import org.springframework.context.annotation.Primary;
 
 @Entity
 public class Book {
