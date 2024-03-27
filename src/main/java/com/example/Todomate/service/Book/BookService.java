@@ -23,7 +23,6 @@ public class BookService {
         this.userRepository = userRepository;
     }
 
-
     @Transactional
     public void saveBook(String name){
         bookRepository.save(new Book(name));
