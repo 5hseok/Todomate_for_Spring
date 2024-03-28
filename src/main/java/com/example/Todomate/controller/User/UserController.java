@@ -26,15 +26,7 @@ public class UserController {
     public List<UserResponse> getUsers(){
        return userServiceV2.getUser();
     }
-//        return jdbcTemplate.query(sql, new RowMapper<UserResponse>() {    위의 코드는 이걸 lambda로 바꾼 것
-//            @Override
-//            public UserResponse mapRow(ResultSet rs, int rowNum) throws SQLException {
-//                long id = rs.getLong("id");
-//                String name = rs.getString("name");
-//                int age = rs.getInt("age");
-//                return new UserResponse(id, name, age);
-//            }
-//        });
+
     @PutMapping("/user")
     public void updateUser(@RequestBody UserUpdateRequest request){
         userServiceV2.updateUser(request);
