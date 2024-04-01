@@ -2,7 +2,6 @@ package com.example.Todomate.service.User;
 
 import com.example.Todomate.domain.User.User;
 import com.example.Todomate.domain.User.UserRepository;
-import com.example.Todomate.dto.User.request.UserCreateRequest;
 import com.example.Todomate.dto.User.request.UserUpdateRequest;
 import com.example.Todomate.dto.User.response.UserResponse;
 import org.springframework.stereotype.Service;
@@ -40,10 +39,8 @@ public class UserServiceV2 {
     }
     public void deleteUser(String name){
 
-        User user = userRepository.findByName(name);
-        if (user == null){
-            throw new IllegalArgumentException();
-        }
+        User user = userRepository.findByName(name)
+                .orElseThrow(IllegalArgumentException::new);
         userRepository.delete(user);
     }
 
