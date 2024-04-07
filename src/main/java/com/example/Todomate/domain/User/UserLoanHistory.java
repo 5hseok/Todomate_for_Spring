@@ -19,4 +19,7 @@ public class UserLoanHistory {
         this.bookName = bookName;
         this.loan = false;
     }
+
+    protected UserLoanHistory() {
+    }
 }
