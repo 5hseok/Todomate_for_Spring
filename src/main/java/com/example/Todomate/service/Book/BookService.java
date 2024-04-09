@@ -33,7 +33,7 @@ public class BookService {
        Book book = bookRepository.findByName(bookName)
                 .orElseThrow(IllegalArgumentException::new);
         //isReturn은 반납되었는가를 묻는 것. isReturn이 false면 반납을 아직 안한 것이고, isReturn이 true면 반납한 것이다.
-       if(userLoanRepository.existsByNameAndIsReturn(book.getName(), false)){
+       if(userLoanRepository.existsByBookNameAndLoan(book.getName(), false)){
            throw new IllegalArgumentException("이미 대출 중인 도서입니다.");
        }
 
@@ -48,7 +48,7 @@ public class BookService {
                 .orElseThrow(IllegalArgumentException::new);
 
         //isReturn은 반납되었는가를 묻는 것. isReturn이 false면 반납을 아직 안한 것이고, isReturn이 true면 반납한 것이다.
-        if(userLoanRepository.existsByNameAndIsReturn(book.getName(), true)){
+        if(userLoanRepository.existsByBookNameAndLoan(book.getName(), true)){
             throw new IllegalArgumentException("이미 반납이 완료된 도서입니다.");
         }
 
