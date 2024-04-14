@@ -9,8 +9,6 @@ import com.example.Todomate.repository.User.UserLoanRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 
 @Service
 public class BookService {
