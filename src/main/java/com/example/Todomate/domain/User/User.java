@@ -1,7 +1,6 @@
 package com.example.Todomate.domain.User;
 
 import jakarta.persistence.*;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @Entity
 public class User {
