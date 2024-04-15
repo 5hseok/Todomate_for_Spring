@@ -3,7 +3,6 @@ package com.example.Todomate.controller.User;
 import com.example.Todomate.dto.User.request.UserCreateRequest;
 import com.example.Todomate.dto.User.request.UserUpdateRequest;
 import com.example.Todomate.dto.User.response.UserResponse;
-import com.example.Todomate.service.User.UserServiceV1;
 import com.example.Todomate.service.User.UserServiceV2;
 import org.springframework.web.bind.annotation.*;
 
