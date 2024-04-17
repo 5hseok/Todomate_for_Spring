@@ -53,6 +53,8 @@ public class BookService {
         User user = userRepository.findByName(userName)
                 .orElseThrow(IllegalArgumentException::new);
 
-        userLoanRepository.save(new UserLoanHistory(user.getId(), book.getName()));
+        UserLoanHistory loanHistory = userLoanRepository.findByUseridAndBookName(user.getId(), book.getName());
+        loanHistory.updateLoan(true);
+        userLoanRepository.save(loanHistory);
     }
-} 
+}
