@@ -20,6 +20,10 @@ public class UserLoanHistory {
         this.loan = false;
     }
 
+    public void updateLoan(boolean loan) {
+        this.loan = loan;
+    }
+
     protected UserLoanHistory() {
     }
 }
