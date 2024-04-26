@@ -12,12 +12,12 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Service
-public class SiteUseService {
+public class SiteUserService {
 
         private final SiteUserRepository SiteUserRepository;
         private final PasswordEncoder passwordEncoder;
 
-        public SecurityProperties.User create(String username, String email, String password) {
+        public SiteUser create(String username, String email, String password) {
             SiteUser user = new SiteUser();
             user.setUsername(username);
             user.setEmail(email);
