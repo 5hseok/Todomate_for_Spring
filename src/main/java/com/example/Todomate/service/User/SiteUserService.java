@@ -1,14 +1,10 @@
 package com.example.Todomate.service.User;
 
 import com.example.Todomate.domain.User.SiteUser;
-import com.example.Todomate.domain.User.User;
-import com.example.Todomate.domain.User.UserRepository;
 import com.example.Todomate.repository.User.SiteUserRepository;
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Service
